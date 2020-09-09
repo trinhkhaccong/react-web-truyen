@@ -55,14 +55,20 @@ export default function ListTruyen() {
           <div className="col-3">
             <img width={90} src={row.link} />
           </div>
-          <div className="col-7">
-            <div style={{ marginBottom: 30 }}>
-              <img width={40} src="../book.png" />
+          <div className="col-9">
+            <div style={{ marginBottom:5,fontWeight:'bold'  }}>
               {row.ten}
             </div>
-            <div>
-              <img src="../tac_gia.png" />
+            <div style={{ marginBottom:5}}>
+              {'"'+row.content.slice(0,150) +'..."'}
+            </div>
+            <div style={{ marginBottom:5}}>
+              <img width='20px' src="../tac_gia.png" />
               {row.tac_gia}
+            </div>
+            <div>
+              <img width='20px' src="../list_green.png" style={{marginRight:5}}/>Tổng chương: 
+              {" "+row.chuong}
             </div>
           </div>
         </div>

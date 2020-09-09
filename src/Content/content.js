@@ -10,32 +10,49 @@ import {
   useLocation,
   Link,
 } from "react-router-dom";
+import Select from "react-select";
 
 export default function Content() {
-    
   let location = useLocation();
-  var chuong  = parseInt((location.pathname.split("/")[3]).split("chuong-")[1])
+  var chuong = parseInt(location.pathname.split("/")[3].split("chuong-")[1]);
   const [data, setDataLocation] = useState({});
   const [content, setContent] = useState([]);
   const [checkdata, setCheckdata] = useState(false);
-  const [checkdown,setCheckdown] = useState(false);
-  const [chuongnext,setChuongnext]= useState((location.pathname).slice(0,(location.pathname.search("chuong-")+7))+(chuong+1).toString())
-  const [chuongdown,setChuongdown]= useState((location.pathname).slice(0,(location.pathname.search("chuong-")+7)).toString())
+  const [checkdown, setCheckdown] = useState(false);
+  const [chuongnext, setChuongnext] = useState(
+    location.pathname.slice(0, location.pathname.search("chuong-") + 7) +
+      (chuong + 1).toString()
+  );
+  const [chuongdown, setChuongdown] = useState(
+    location.pathname.slice(0, location.pathname.search("chuong-") + 7) +
+      chuong.toString()
+  );
+  const [options, setOption] = useState([]);
 
   useEffect(() => {
     const fetch_data = async () => {
-        var chuong  = parseInt((location.pathname.split("/")[3]).split("chuong-")[1])
-        console.log((location.pathname).slice(0,(location.pathname.search("chuong-")+7))+(chuong+1).toString())
-        setChuongnext((location.pathname).slice(0,(location.pathname.search("chuong-")+7))+(chuong+1).toString())
-        setChuongdown((location.pathname).slice(0,(location.pathname.search("chuong-"))+7)+(chuong-1).toString())
-        if(location.pathname.split("/")[3] ==='chuong-1')
-        {
-            setCheckdown(true)
-        }
-        else
-        {
-            setCheckdown(false)
-        }
+      var chuong = parseInt(
+        location.pathname.split("/")[3].split("chuong-")[1]
+      );
+      console.log(
+        location.pathname.slice(0, location.pathname.search("chuong-") + 7) +
+          (chuong + 1).toString()
+      );
+      setChuongnext(
+        location.pathname.slice(0, location.pathname.search("chuong-") + 7) +
+          (chuong + 1).toString()
+      );
+      if (chuong > 1) {
+        setChuongdown(
+          location.pathname.slice(0, location.pathname.search("chuong-") + 7) +
+            (chuong - 1).toString()
+        );
+      }
+      if (location.pathname.split("/")[3] === "chuong-1") {
+        setCheckdown(true);
+      } else {
+        setCheckdown(false);
+      }
       let data = {
         id_ten: location.pathname.split("/")[2],
         id_chuong: location.pathname.split("/")[3],
@@ -45,9 +62,35 @@ export default function Content() {
         url: "http://localhost:5000/get/truyen",
         data: data,
       });
-      console.log(res.data);
-      setDataLocation(res.data);
-      setContent(res.data.content.split("\n"));
+      if (res.data.length == 0) {
+        setContent(["Chưa ra chương mới !"]);
+      } else {
+        setDataLocation(res.data.data);
+        setContent(res.data.data.content.split("\n"));
+        let chuong = [
+          { value: "--chon chuong--", label: "-- Chọn Chương -- " },
+        ];
+        for (var i = 1; i <= res.data.chuong; i++) {
+          let ob = {
+            value: i,
+            label: (
+              <Link
+                to={
+                  location.pathname.slice(
+                    0,
+                    location.pathname.search("chuong-") + 7
+                  ) + i.toString()
+                }
+                style={{ color: "orange" }}
+              >
+                Chương {i.toString()}
+              </Link>
+            ),
+          };
+          chuong.push(ob);
+        }
+        setOption(chuong);
+      }
       setCheckdata(true);
     };
     fetch_data();
@@ -71,14 +114,36 @@ export default function Content() {
             {data.chuong}
           </center>
           <center>
-              <img src="../../pic_so_deep.png" width='40%' className='m-2'/>
-              <div className='row col-9'>
-              <center className='col-4'><button type="button" class="btn btn-info" disabled={checkdown}><Link to={chuongdown}>Chương trước</Link></button></center>
-              <center className='col-4'><button type="button" class="btn btn-info">Danh sách</button></center>
-              <center className='col-4'><button type="button" class="btn btn-info"><Link to={chuongnext}>Chương sau</Link></button></center>
-              </div>
-              <hr/>
+            <img src="../../pic_so_deep.png" width="40%" className="m-2" />
+            <div className="row col-9">
+              <center className="col-4">
+                <button type="button" class="btn btn-info" disabled={checkdown}>
+                  <Link
+                    to={{
+                      pathname: chuongdown,
+                    }}
+                    style={{ textDecoration: "none", color: "white" }}
+                  >
+                    Chương trước
+                  </Link>
+                </button>
               </center>
+              <center className="col-4">
+                <Select defaultValue={options[0]} options={options} />
+              </center>
+              <center className="col-4">
+                <button type="button" class="btn btn-info">
+                  <Link
+                    to={chuongnext}
+                    style={{ textDecoration: "none", color: "white" }}
+                  >
+                    Chương sau
+                  </Link>
+                </button>
+              </center>
+            </div>
+            <hr />
+          </center>
           <div>
             {content.map((value) => {
               if (value == "") {
@@ -89,6 +154,33 @@ export default function Content() {
           </div>
         </div>
       )}
+      <div className="row">
+              <center className="col-4">
+                <button type="button" class="btn btn-info" disabled={checkdown} onClick={window.scroll(0,0)}>
+                  <Link
+                    to={{
+                      pathname: chuongdown,
+                    }}
+                    style={{ textDecoration: "none", color: "white" }}
+                  >
+                    Chương trước
+                  </Link>
+                </button>
+              </center>
+              <center className="col-4">
+                <Select defaultValue={options[0]} options={options} />
+              </center>
+              <center className="col-4">
+                <button type="button" class="btn btn-info" onClick={window.scroll(0,0)}>
+                  <Link
+                    to={chuongnext}
+                    style={{ textDecoration: "none", color: "white" }}
+                  >
+                    Chương sau
+                  </Link>
+                </button>
+              </center>
+            </div>
     </div>
   );
 }

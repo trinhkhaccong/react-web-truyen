@@ -16,8 +16,7 @@ export default function TheLoai() {
           <Link
             className="col mr-1"
             to={{
-              pathname: "/list-truyen",
-              state: { key: "tien_hiep" },
+              pathname: "/list-truyen/tien-hiep",
             }}
             style={{ textDecoration: "none", color: "black" }}
           >
@@ -32,8 +31,7 @@ export default function TheLoai() {
           <Link
             className="col"
             to={{
-              pathname: "/list-truyen",
-              state: { key: "kiem_hiep" },
+              pathname: "/list-truyen/kiem-hiep",
             }}
             style={{ textDecoration: "none", color: "black" }}
           >
@@ -50,120 +48,8 @@ export default function TheLoai() {
           <Link
             className="col mr-1"
             to={{
-              pathname: "/list-truyen",
-              state: { key: "ngon_tinh" },
-            }}
-            style={{ textDecoration: "none", color: "black" }}
-          >
-            <button className="btn btn-outline-info col" style={{ margin: 1 }}>
-              {" "}
-              Ngôn Tình
-            </button>
-          </Link>
-          <Link
-            className="col"
-            to={{
-              pathname: "/list-truyen",
-              state: { key: "truyen_teen" },
-            }}
-            style={{ textDecoration: "none", color: "black" }}
-          >
-            <button className="btn btn-outline-info col" style={{ margin: 1 }}>
-              {" "}
-              Truyện Teen
-            </button>
-          </Link>
-        </div>
-        <div className="row">
-          <Link
-            className="col mr-1"
-            to={{
-              pathname: "/list-truyen",
-              state: { key: "do_thi" },
-            }}
-            style={{ textDecoration: "none", color: "black" }}
-          >
-            <button className="btn btn-outline-info col" style={{ margin: 1 }}>
-              {" "}
-              Đô Thị
-            </button>
-          </Link>
-          <Link
-            className="col"
-            to={{
-              pathname: "/list-truyen",
-              state: { key: "quan_su" },
-            }}
-            style={{ textDecoration: "none", color: "black" }}
-          >
-            <button className="btn btn-outline-info col" style={{ margin: 1 }}>
-              {" "}
-              Quân Sự
-            </button>
-          </Link>
-        </div>
-        <div className="row">
-          <Link
-            className="col mr-1"
-            to={{
-              pathname: "/list-truyen",
-              state: { key: "lich_su" },
-            }}
-            style={{ textDecoration: "none", color: "black" }}
-          >
-            <button className="btn btn-outline-info col" style={{ margin: 1 }}>
-              {" "}
-              Lịch Sử
-            </button>
-          </Link>
-          <Link
-            className="col"
-            to={{
-              pathname: "/list-truyen",
-              state: { key: "xuyen_khong" },
-            }}
-            style={{ textDecoration: "none", color: "black" }}
-          >
-            <button className="btn btn-outline-info col" style={{ margin: 1 }}>
-              {" "}
-              Xuyên Không
-            </button>
-          </Link>
-        </div>
-        <div className="row">
-          <Link
-            className="col mr-1"
-            to={{
-              pathname: "/list-truyen",
-              state: { key: "truyen_ma" },
-            }}
-            style={{ textDecoration: "none", color: "black" }}
-          >
-            <button className="btn btn-outline-info col" style={{ margin: 1 }}>
-              {" "}
-              Truyện Ma
-            </button>
-          </Link>
-          <Link
-            className="col"
-            to={{
-              pathname: "/list-truyen",
-              state: { key: "trinh_tham" },
-            }}
-            style={{ textDecoration: "none", color: "black" }}
-          >
-            <button className="btn btn-outline-info col" style={{ margin: 1 }}>
-              {" "}
-              Trinh Thám
-            </button>
-          </Link>
-        </div>
-        <div className="row">
-          <Link
-            className="col mr-1"
-            to={{
-              pathname: "/list-truyen",
-              state: { key: "huyen_huyen" },
+              pathname: "/list-truyen/huyen-huyen",
+
             }}
             style={{ textDecoration: "none", color: "black" }}
           >
@@ -175,8 +61,114 @@ export default function TheLoai() {
           <Link
             className="col"
             to={{
-              pathname: "/list-truyen",
-              state: { key: "khoa_huyen" },
+              pathname: "/list-truyen/ngon-tinh",
+
+            }}
+            style={{ textDecoration: "none", color: "black" }}
+          >
+            <button className="btn btn-outline-info col" style={{ margin: 1 }}>
+              {" "}
+              Ngôn Tình
+            </button>
+          </Link>
+        </div>
+        <div className="row">
+          <Link
+            className="col mr-1"
+            to={{
+              pathname: "/list-truyen/sac-hiep",
+
+            }}
+            style={{ textDecoration: "none", color: "black" }}
+          >
+            <button className="btn btn-outline-info col" style={{ margin: 1 }}>
+              {" "}
+             Sắc Hiệp
+            </button>
+          </Link>
+          <Link
+            className="col"
+            to={{
+              pathname: "/list-truyen/di-gioi",
+            }}
+            style={{ textDecoration: "none", color: "black" }}
+          >
+            <button className="btn btn-outline-info col" style={{ margin: 1 }}>
+              {" "}
+             Dị Giới
+            </button>
+          </Link>
+        </div>
+        <div className="row">
+          <Link
+            className="col mr-1"
+            to={{
+              pathname: "/list-truyen/do-thi",
+            }}
+            style={{ textDecoration: "none", color: "black" }}
+          >
+            <button className="btn btn-outline-info col" style={{ margin: 1 }}>
+              {" "}
+              Đô thị
+            </button>
+          </Link>
+          <Link
+            className="col"
+            to={{
+              pathname: "/list-truyen/huyen-ao"
+            }}
+            style={{ textDecoration: "none", color: "black" }}
+          >
+            <button className="btn btn-outline-info col" style={{ margin: 1 }}>
+              {" "}
+              Huyền Ảo
+            </button>
+          </Link>
+        </div>
+        <div className="row">
+          <Link
+            className="col mr-1"
+            to={{
+              pathname: "/list-truyen/trinh-tham",
+            }}
+            style={{ textDecoration: "none", color: "black" }}
+          >
+            <button className="btn btn-outline-info col" style={{ margin: 1 }}>
+              {" "}
+              Trinh Thám
+            </button>
+          </Link>
+          <Link
+            className="col"
+            to={{
+              pathname: "/list-truyen/co-dai",
+
+            }}
+            style={{ textDecoration: "none", color: "black" }}
+          >
+            <button className="btn btn-outline-info col" style={{ margin: 1 }}>
+              {" "}
+              Cổ Đại
+            </button>
+          </Link>
+        </div>
+        <div className="row">
+          <Link
+            className="col mr-1"
+            to={{
+              pathname: "/list-truyen/he-thong",
+            }}
+            style={{ textDecoration: "none", color: "black" }}
+          >
+            <button className="btn btn-outline-info col" style={{ margin: 1 }}>
+              {" "}
+              Hệ Thống
+            </button>
+          </Link>
+          <Link
+            className="col"
+            to={{
+              pathname: "/list-truyen/khoa-huyen",
             }}
             style={{ textDecoration: "none", color: "black" }}
           >
@@ -190,83 +182,25 @@ export default function TheLoai() {
           <Link
             className="col mr-1"
             to={{
-              pathname: "/list-truyen",
-              state: { key: "di_gioi" },
+              pathname: "/list-truyen/quan-su",
             }}
             style={{ textDecoration: "none", color: "black" }}
           >
             <button className="btn btn-outline-info col" style={{ margin: 1 }}>
               {" "}
-              Dị Giới
+              Quân Sự
             </button>
           </Link>
           <Link
             className="col"
             to={{
-              pathname: "/list-truyen",
-              state: { key: "vong_du" },
+              pathname: "/list-truyen/bach-hop",
             }}
             style={{ textDecoration: "none", color: "black" }}
           >
             <button className="btn btn-outline-info col" style={{ margin: 1 }}>
               {" "}
-              Võng Du
-            </button>
-          </Link>
-        </div>
-        <div className="row">
-          <Link
-            className="col mr-1"
-            to={{
-              pathname: "/list-truyen",
-              state: { key: "truyen_ngan" },
-            }}
-            style={{ textDecoration: "none", color: "black" }}
-          >
-            <button className="btn btn-outline-info col" style={{ margin: 1 }}>
-              {" "}
-              Truyện Ngắn
-            </button>
-          </Link>
-          <Link
-            className="col"
-            to={{
-              pathname: "/list-truyen",
-              state: { key: "truyen_cuoi" },
-            }}
-            style={{ textDecoration: "none", color: "black" }}
-          >
-            <button className="btn btn-outline-info col" style={{ margin: 1 }}>
-              {" "}
-              Truyện Cười
-            </button>
-          </Link>
-        </div>
-        <div className="row">
-          <Link
-            className="col mr-1"
-            to={{
-              pathname: "/list-truyen",
-              state: { key: "tieu_thuyet" },
-            }}
-            style={{ textDecoration: "none", color: "black" }}
-          >
-            <button className="btn btn-outline-info col" style={{ margin: 1 }}>
-              {" "}
-              Tiểu Thuyết
-            </button>
-          </Link>
-          <Link
-            className="col"
-            to={{
-              pathname: "/list-truyen",
-              state: { key: "review" },
-            }}
-            style={{ textDecoration: "none", color: "black" }}
-          >
-            <button className="btn btn-outline-info col" style={{ margin: 1 }}>
-              {" "}
-              Review
+             Bách Hợp
             </button>
           </Link>
         </div>

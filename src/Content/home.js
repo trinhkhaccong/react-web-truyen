@@ -25,7 +25,7 @@ export default function Home() {
   };
   const [data_tien_hiep, setDatatienhiep] = useState([]);
   const [data_kiem_hiep, setDatakiemhiep] = useState([]);
-  const [data_truyen_teen, setDatatruyenteen] = useState([]);
+  const [data_huyen_huyen, setDatatruyenteen] = useState([]);
   const [checkdata, setCheckdata] = useState(false);
 
   useEffect(() => {
@@ -37,32 +37,31 @@ export default function Home() {
       let data_kiem_hiep = {
         type: "kiem-hiep",
       };
-      let data_truyen_teen = {
+      let data_huyen_huyen = {
         type: "huyen-huyen",
       };
 
       let res_tien_hiep = await axios({
         method: "post",
-        url: "http://localhost:5000/get_list/type",
+        url: "http://localhost:5000/get_list/type/home",
         data: data_tien_hiep,
       });
 
       let res_kiem_hiep = await axios({
         method: "post",
-        url: "http://localhost:5000/get_list/type",
+        url: "http://localhost:5000/get_list/type/home",
         data: data_kiem_hiep,
       });
 
-      let res_truyen_teen = await axios({
+      let res_huyen_huyen = await axios({
         method: "post",
-        url: "http://localhost:5000/get_list/type",
-        data: data_truyen_teen,
+        url: "http://localhost:5000/get_list/type/home",
+        data: data_huyen_huyen,
       });
 
-      console.log(res_tien_hiep.data);
       await setDatatienhiep(res_tien_hiep.data);
       await setDatakiemhiep(res_kiem_hiep.data);
-      await setDatatruyenteen(res_truyen_teen.data);
+      await setDatatruyenteen(res_huyen_huyen.data);
       await setCheckdata(true);
     };
     fetch_data();
@@ -121,7 +120,7 @@ export default function Home() {
         Huyền Huyễn
       </h3>
       <Slider {...settings}>
-        {data_truyen_teen.map((value) => (
+        {data_huyen_huyen.map((value) => (
           <div>
             <img width="100%" style={{ padding: 5 }} src={value.link} />
             <Link 

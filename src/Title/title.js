@@ -9,10 +9,9 @@ import "./title.css"
 export default  function Title()
 {
   return(<div className='row' style={{background:'#2C7ABE',height:48}}>
-    <div className='col-2'>< Logo/></div>
+    <div className='col-3'>< Logo/></div>
     <div className='col-2'><TheLoai/></div>
-    <div className='col-2'><SapXep/></div>
     <div className='col-5'><Search/></div>
-    <div className='col-1'><Login/></div>
+    <div className='col-2'><Login/></div>
   </div>)
 }

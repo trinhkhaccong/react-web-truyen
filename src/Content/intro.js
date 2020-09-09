@@ -37,9 +37,26 @@ export default function Intro() {
     },
   ];
   let location = useLocation();
+ 
   useEffect(() => {
     setCheckdata(false);
     const fetch_data = async () => {
+      if(localStorage.getItem("ten-truyen") == null)
+      {
+        var ten_truyen = location.pathname.split("intro-truyen/")[1]
+        localStorage.setItem("ten-truyen",ten_truyen+";")
+      }
+      else
+      {
+        var ten_truyen = location.pathname.split("intro-truyen/")[1]
+        var key = localStorage.getItem("ten-truyen")
+        if(key.search(ten_truyen)<0)
+        {
+          key = key+ten_truyen+";"
+          localStorage.setItem("ten-truyen",key)
+        }
+              
+      }
       let data;
       data = {
         ten_truyen: location.pathname.split("intro-truyen/")[1],
@@ -56,8 +73,6 @@ export default function Intro() {
         url: "http://localhost:5000/get/data_truyen",
         data: data,
       });
-      console.log(res.data);
-      console.log(res_intro.data);
       setData_content(res_intro.data);
       setContent(res_intro.data.content.split("\n"));
       await setDatatruyen(res.data.data);

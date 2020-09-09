@@ -32,7 +32,15 @@ code {
   border-bottom-style: solid;
   border-color: coral;
 }
-
+.border:hover{
+  margin-top: 1px;
+  padding: 2px;
+  border-top-style: solid;
+  border-bottom-style: solid;
+  border-color: coral;
+  background-color: orange;
+  color: #FFF !important;
+}
 .element {
   min-width: 100px;
   height: 100px;
@@ -49,4 +57,22 @@ code {
 .slick-prev:before, .slick-next:before {
   color: blue !important;
   font-size: 25px !important;
+}
+
+.color_link
+{
+  color: #17a2b8;
+}
+
+.color_link:hover
+{
+  color: #FFF;
+}
+
+p {
+  display: block;
+  margin-block-start: 0em !important;
+  margin-block-end: 0em !important; 
+  margin-inline-start: 0px;
+  margin-inline-end: 0px;
 }

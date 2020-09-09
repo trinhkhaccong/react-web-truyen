@@ -10,6 +10,9 @@ import Home from "./Content/home"
 import ListTruyen from "./Content/list_truyen"
 import Intro from "./Content/intro"
 import Content from "./Content/content"
+import History from "./history/history"
+import GioiThieu from "./Content/gioi_thieu"
+import ReactAudioPlayer from 'react-audio-player';
 
 function App() {
 
@@ -18,7 +21,7 @@ function App() {
       <Title />
       <div className='row' >
         <div className='col-3' style={{ background: 'white', margin: 5 }}>
-          <center className='' style={{ fontWeight: 'bold', padding: 5 }}>THỂ LOẠI TRUYỆN</center>
+          <center className='' style={{ fontWeight: 'bold', padding: 5 ,fontSize:20}}>Thể Loại Truyện</center>
           <div className='row'>
 
             <div className='col-6 border' >
@@ -54,122 +57,38 @@ function App() {
           <div className='row'>
             <div className='col-6 border' ><Link
               to={{
-                pathname: "/list-truyen/doan-van"
+                pathname: "/list-truyen/sac-hiep"
               }}
               style={{ textDecoration: 'none', color: "black" }}
-            ><img src='../../icon_tag.png' />Đoản Văn</Link></div>
+            ><img src='../../icon_tag.png' />Sắc Hiệp</Link></div>
             <div className='col-6 border'><Link
               to={{
-                pathname: "/list-truyen/dong-phuong"
+                pathname: "/list-truyen/di-gioi"
               }}
               style={{ textDecoration: 'none', color: "black" }}
-            ><img src='../../icon_tag.png' />Đông Phương</Link></div>
+            ><img src='../../icon_tag.png' />Dị Giới</Link></div>
           </div>
           <div className='row'>
             <div className='col-6 border' ><Link
               to={{
-                pathname: "/list-truyen/gia-dau"
+                pathname: "/list-truyen/do-thi"
               }}
               style={{ textDecoration: 'none', color: "black" }}
-            ><img src='../../icon_tag.png' />Gia Đấu</Link></div>
+            ><img src='../../icon_tag.png' />Đô Thị</Link></div>
             <div className='col-6 border'><Link
               to={{
-                pathname: "/list-truyen/nu-cuong"
+                pathname: "/list-truyen/huyen-ao"
               }}
               style={{ textDecoration: 'none', color: "black" }}
-            ><img src='../../icon_tag.png' />Nữ Cường</Link></div>
+            ><img src='../../icon_tag.png' />Huyền Ảo</Link></div>
           </div>
           <div className='row'>
             <div className='col-6 border' ><Link
               to={{
-                pathname: "/list-truyen/cung-dau"
+                pathname: "/list-truyen/trinh-tham"
               }}
               style={{ textDecoration: 'none', color: "black" }}
-            ><img src='../../icon_tag.png' />Cung Đấu</Link></div>
-            <div className='col-6 border'><Link
-              to={{
-                pathname: "/list-truyen/truong-sung"
-              }}
-              style={{ textDecoration: 'none', color: "black" }}
-            ><img src='../../icon_tag.png' />Truyện Sủng</Link></div>
-          </div>
-          <div className='row'>
-            <div className='col-6 border' ><Link
-              to={{
-                pathname: "/list-truyen/truyen-nguoc"
-              }}
-              style={{ textDecoration: 'none', color: "black" }}
-            ><img src='../../icon_tag.png' />Truyện Ngược</Link></div>
-            <div className='col-6 border'><Link
-              to={{
-                pathname: "/list-truyen/linh-di"
-              }}
-              style={{ textDecoration: 'none', color: "black" }}
-            ><img src='../../icon_tag.png' />Linh Dị</Link></div>
-          </div>
-          <div className='row'>
-            <div className='col-6 border' ><Link
-              to={{
-                pathname: "/list-truyen/tham-hiem"
-              }}
-              style={{ textDecoration: 'none', color: "black" }}
-            ><img src='../../icon_tag.png' />Thám Hiểm</Link></div>
-            <div className='col-6 border'><Link
-              to={{
-                pathname: "/list-truyen/bac-hop"
-              }}
-              style={{ textDecoration: 'none', color: "black" }}
-            ><img src='../../icon_tag.png' />Bách Hợp</Link></div>
-          </div>
-          <div className='row'>
-            <div className='col-6 border' ><Link
-              to={{
-                pathname: "/list-truyen/dai-huoc"
-              }}
-              style={{ textDecoration: 'none', color: "black" }}
-            ><img src='../../icon_tag.png' />Hài Hước</Link></div>
-            <div className='col-6 border'><Link
-              to={{
-                pathname: "/list-truyen/hien-dai"
-              }}
-              style={{ textDecoration: 'none', color: "black" }}
-            ><img src='../../icon_tag.png' />Hiện Đại</Link></div>
-          </div>
-          <div className='row'>
-            <div className='col-6 border' ><Link
-              to={{
-                pathname: "/list-truyen/viet-nam"
-              }}
-              style={{ textDecoration: 'none', color: "black" }}
-            ><img src='../../icon_tag.png' />Việt Nam</Link></div>
-            <div className='col-6 border'><Link
-              to={{
-                pathname: "/list-truyen/light-novel"
-              }}
-              style={{ textDecoration: 'none', color: "black" }}
-            ><img src='../../icon_tag.png' />Light Novel</Link></div>
-          </div>
-          <div className='row'>
-            <div className='col-6 border' ><Link
-              to={{
-                pathname: "/list-truyen/nu-phu"
-              }}
-              style={{ textDecoration: 'none', color: "black" }}
-            ><img src='../../icon_tag.png' />Nữ Phụ</Link></div>
-            <div className='col-6 border'><Link
-              to={{
-                pathname: "/list-truyen/phuong-tay"
-              }}
-              style={{ textDecoration: 'none', color: "black" }}
-            ><img src='../../icon_tag.png' />Phương Tây</Link></div>
-          </div>
-          <div className='row'>
-            <div className='col-6 border' ><Link
-              to={{
-                pathname: "/list-truyen/mat-the"
-              }}
-              style={{ textDecoration: 'none', color: "black" }}
-            ><img src='../../icon_tag.png' />Mạt Thế</Link></div>
+            ><img src='../../icon_tag.png' />Trinh Tham</Link></div>
             <div className='col-6 border'><Link
               to={{
                 pathname: "/list-truyen/co-dai"
@@ -180,19 +99,34 @@ function App() {
           <div className='row'>
             <div className='col-6 border' ><Link
               to={{
-                pathname: "/list-truyen/dien-van"
+                pathname: "/list-truyen/he-thong"
               }}
               style={{ textDecoration: 'none', color: "black" }}
-            ><img src='../../icon_tag.png' />Điền Văn</Link></div>
+            ><img src='../../icon_tag.png' />Hệ Thống</Link></div>
             <div className='col-6 border'><Link
               to={{
-                pathname: "/list-truyen/dong-nhan"
+                pathname: "/list-truyen/khoa-huyen"
               }}
               style={{ textDecoration: 'none', color: "black" }}
-            ><img src='../../icon_tag.png' />Đồng Nhân</Link></div>
+            ><img src='../../icon_tag.png' />Khoa Huyễn</Link></div>
           </div>
-
-        </div>
+          <div className='row'>
+            <div className='col-6 border' ><Link
+              to={{
+                pathname: "/list-truyen/quan-su"
+              }}
+              style={{ textDecoration: 'none', color: "black" }}
+            ><img src='../../icon_tag.png' />Quân Sự</Link></div>
+            <div className='col-6 border'><Link
+              to={{
+                pathname: "/list-truyen/bac-hop"
+              }}
+              style={{ textDecoration: 'none', color: "black" }}
+            ><img src='../../icon_tag.png' />Bách Hợp</Link></div>
+          </div>
+          <hr/>
+              <History/>
+          </div>
         
         <div className='col-8' style={{ background: "white", margin: 5, marginLeft: 30 }} >
           <Switch>
@@ -202,9 +136,11 @@ function App() {
             <Route path='/content-truyen/*' component={Content} />
             
           </Switch>
+          
         </div>
-
+       
       </div>
+      <GioiThieu/>
     </div>
   );
 }

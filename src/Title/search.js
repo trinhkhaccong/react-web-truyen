@@ -12,20 +12,13 @@ export default function Search() {
         alert(inputtext)
     }
 
-    return (<div className='row' style={{ color: 'white' }}>
-        <div className='col-8'>
+    return (<div style={{ color: 'white' }}>
             <Form.Control 
             className="mt-1" 
             type="text" 
             placeholder="Tìm truyện, tác giả" 
             value={inputtext}
             onChange={(e)=>setInputtext(e.target.value)} />
-        </div>
-        <div className='col-4'>
-            <button
-         className='btn btn-light mt-1' 
-         onClick={search}
-         >Tìm Kiếm</button></div>
 
     </div>)
 }
