@@ -1,9 +1,9 @@
-import React,{useState} from 'react';
+import React from 'react';
 
 
 export default  function Login()
 {
-  return(<div className='text_center' style={{color:'white'}}>
-       <span>login</span>
+  return(<div style={{background: '#DDDDDD',padding:10}}>
+       <div className='right'>Đăng nhập</div>
   </div>)
 }

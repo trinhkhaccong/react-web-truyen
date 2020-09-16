@@ -5,6 +5,7 @@ body {
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  font-size: 14px !important;
 }
 
 code {
@@ -75,4 +76,24 @@ p {
   margin-block-end: 0em !important; 
   margin-inline-start: 0px;
   margin-inline-end: 0px;
+}
+
+.view_data{
+margin:20px;
+border-radius: 20px;
+}
+
+.view_data_mobile{
+  padding-top: 60px;
+}
+
+.css-1hew7ia {
+  border-radius: 20px !important;
+}
+.slick-slide {
+  transition: transform .2s !important; /* Animation */
+}
+
+.slick-slide:hover {
+  transform: scale(1.1); /* (150% zoom - Note: if the zoom is too large, it will go outside of the viewport) */
 }

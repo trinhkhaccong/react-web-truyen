@@ -2,6 +2,7 @@
 // Contact: trinh.khac.cong.hust@gmail.com
 // Phone: 0969860930
 import React, { useState, useEffect } from "react";
+import ShowMore from 'react-show-more';
 import axios from "axios";
 import {
   BrowserRouter as Router,
@@ -10,6 +11,7 @@ import {
   Link,
 } from "react-router-dom";
 import { BootstrapTable, TableHeaderColumn } from "react-bootstrap-table";
+import moment from "moment"
 
 export default function Intro() {
   const [datatruyen, setDatatruyen] = useState([]);
@@ -103,29 +105,38 @@ export default function Intro() {
           </div>
         </center>
       )}
-      <div className="row">
-        <div className="col-4">
-          <img className="col-11 mb-3" src={data_content.link} />
-          <div>
-            <img src="../tac_gia.png" /> {data_content.tac_gia}
-          </div>
-          <div>
-            <img width={40} height={40} src="../loading.png" />{" "}
-            {data_content.date}
-          </div>
-        </div>
-        <div className="col-8">
-          <center style={{ color: "blue", fontWeight: "bold", fontSize: 22 }}>
+       <center style={{ color: "blue", fontWeight: "bold", fontSize: 22 }}>
             {data_content.ten}
           </center>
           <hr />
+      <div className="row">
+        <div className="col-3">
+          <img className="col-11 mb-3" src={data_content.link} />
+          <div style={{fontWeight:'bold'}}className='m-1'>
+            <img width={25} height={25}src="../tac_gia.png" /> {data_content.tac_gia}
+          </div>
+          <div className='m-1'>
+          <img width={25} height={25}src="../loading.png" />
+
+            {moment(data_content.date).format("DD-MM-YYYY")}
+          </div>
+        </div>
+        <div className="col">
+         
           <p>
+          <ShowMore
+                lines={8}
+                more='Show more'
+                less='Show less'
+                anchorClass=''
+            >
             {content.map((value) => {
               if (value == "") return <br />;
               else {
-                return <div>{value}</div>;
+                return <div>{value.replaceAll("*","")}</div>;
               }
             })}
+            </ShowMore>
           </p>
         </div>
       </div>
@@ -133,8 +144,6 @@ export default function Intro() {
       {checkdata && (
         <BootstrapTable
           data={datatruyen}
-          striped={true}
-          hover={true}
           pagination={true}
         >
           <TableHeaderColumn

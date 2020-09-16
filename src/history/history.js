@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
+import ShowMore from 'react-show-more';
 import {
   BrowserRouter as Router,
   Switch,
@@ -20,19 +21,21 @@ export default function History() {
           data: data,
         });
         setDataHistory(res.data);
-        console.log(res.data);
+        console.log("setDataHistory",res.data);
       }
     };
     get_history();
   }, []);
   return (
-    <div style={{ padding: 5 }}>
-      <center className="" style={{ fontWeight: "bold", padding: 5 ,fontSize:20}}>
+    <div style={{ padding: 20 }}>
+      <center className="" style={{ fontWeight: "bold" ,fontSize:20}}>
         Lịch Sử
       </center>
       <hr />
-      {data_history.map((value) => (
+     
+      {data_history.map((value,key) => (
         <Link
+        key = {key}
           to={{
             pathname: "/intro-truyen/" + value.id_ten,
           }}
@@ -42,17 +45,20 @@ export default function History() {
             className="row"
             style={{ background: "#EEEEEE", marginBottom: 10 }}
           >
-            <div className="col-3">
-              <img width="80%" src={value.link} />
+            <div className="col-2">
+              <img width="70%" src={value.link} />
             </div>
             <div className="col">
-              <div>Truyện: {value.ten}</div>
-              <div>Tác giả: {value.tac_gia}</div>
-              <div>Chương: {value.chuong}</div>
+              <div style={{fontWeight:'bold'}}>{value.ten}</div>
+              <div>chương: {value.chuong}</div>
+              {
+                value.the_loai.split("-").map(value2=>(<button type="button" className="btn btn-primary btn-sm m-1" >{value2}</button>))
+              }
             </div>
           </div>
         </Link>
       ))}
+     
     </div>
   );
 }

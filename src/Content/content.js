@@ -114,8 +114,8 @@ export default function Content() {
             {data.chuong}
           </center>
           <center>
-            <img src="../../pic_so_deep.png" width="40%" className="m-2" />
-            <div className="row col-9">
+            <img src="../../pic_so_deep.png" width="40%" margin='10px' className="m-2" />
+            <div className="row">
               <center className="col-4">
                 <button type="button" class="btn btn-info" disabled={checkdown}>
                   <Link
@@ -124,7 +124,7 @@ export default function Content() {
                     }}
                     style={{ textDecoration: "none", color: "white" }}
                   >
-                    Chương trước
+                    {"<<"}
                   </Link>
                 </button>
               </center>
@@ -137,7 +137,7 @@ export default function Content() {
                     to={chuongnext}
                     style={{ textDecoration: "none", color: "white" }}
                   >
-                    Chương sau
+                    {">>"}
                   </Link>
                 </button>
               </center>
@@ -163,7 +163,7 @@ export default function Content() {
                     }}
                     style={{ textDecoration: "none", color: "white" }}
                   >
-                    Chương trước
+                   {"<<"}
                   </Link>
                 </button>
               </center>
@@ -176,7 +176,7 @@ export default function Content() {
                     to={chuongnext}
                     style={{ textDecoration: "none", color: "white" }}
                   >
-                    Chương sau
+                     {">>"}
                   </Link>
                 </button>
               </center>

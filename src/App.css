@@ -36,3 +36,65 @@
     transform: rotate(360deg);
   }
 }
+
+.menu_desktop {
+  width: 300px !important;
+  height: 100% !important;
+  position: fixed !important;
+  top: 50px;
+  overflow: scroll;
+  background-color: #FFF;
+  z-index: 10;
+  -webkit-transition: all 1s ease;
+  -moz-transition: all 1s ease;
+  -o-transition: all 1s ease;
+  -ms-transition: all 1s ease;
+  transition: all 1s ease;
+  left: 0; /*or bottom, top, right*/
+}
+
+.menu_desktop_mobile {
+  width: 300px !important;
+  height: 100% !important;
+  position: fixed !important;
+  top: 50px;
+  margin-left: -300px;
+  overflow: scroll;
+  background-color: #FFF;
+  z-index: 10;
+  -webkit-transition: all 1s ease;
+  -moz-transition: all 1s ease;
+  -o-transition: all 1s ease;
+  -ms-transition: all 1s ease;
+  transition: all 1s ease;
+  left: 0; /*or bottom, top, right*/
+}
+
+
+.header_menu{
+  position: fixed;
+  z-index: 1000;
+  height: 48px;
+  width: -webkit-fill-available !important;
+}
+
+::-webkit-scrollbar {
+  width: 4px;
+}
+
+::-webkit-scrollbar-track {
+  -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0); 
+  border-radius: 5px;
+}
+
+::-webkit-scrollbar-thumb {
+  border-radius: 5px;
+  -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.5); 
+}
+
+.header_menu_click{
+  position: fixed;
+  z-index: 1000;
+  height: 56.5px;
+  background: #EEEEEE;
+}

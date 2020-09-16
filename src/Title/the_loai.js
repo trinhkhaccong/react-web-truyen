@@ -6,8 +6,10 @@ import { BrowserRouter, Route, Link } from "react-router-dom";
 
 export default function TheLoai() {
   return (
+
+    
     <div className="dropdown">
-      <span>
+      <span style={{fontWeight:'bold'}}>
         <img src="../../icon_tag_white.png" />
         Thể loại
       </span>

@@ -1,4 +1,5 @@
 .dropdown {
+  background: #807e7e;
     position: relative;
     color: white;
     height: 48px;
@@ -34,3 +35,23 @@
     vertical-align:middle;
     cursor: pointer;
   }
+
+.title_mobile
+{
+  margin-left: 56.5px !important;
+}
+
+.right {
+  margin-right:0px;/* whatever */
+  margin:auto;
+  margin-left: 90%;
+  cursor: pointer;
+}
+
+.right:hover {
+  margin-right:0px;/* whatever */
+  margin:auto;
+  margin-left: 90%;
+  cursor: pointer;
+  color: orange;
+}
