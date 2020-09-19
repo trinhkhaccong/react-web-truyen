@@ -84,16 +84,108 @@ border-radius: 20px;
 }
 
 .view_data_mobile{
-  padding-top: 60px;
+  padding-top: 20px;
 }
 
 .css-1hew7ia {
   border-radius: 20px !important;
 }
-.slick-slide {
+.slick-slide img {
+  padding-top:10px !important;
   transition: transform .2s !important; /* Animation */
+  border-radius: 15px !important;
+}
+.slick-slide img:hover {
+  padding-top:10px !important;
+  transform: scale(1.05); /* (150% zoom - Note: if the zoom is too large, it will go outside of the viewport) */
+  border-radius: 15px !important;
 }
 
-.slick-slide:hover {
-  transform: scale(1.1); /* (150% zoom - Note: if the zoom is too large, it will go outside of the viewport) */
+.intro_title{
+  margin:10px;
+  padding:10px;
+  border-radius:15px;
+  border: 1px solid #ccc!important;
+
 }
+
+.doc_truyen{
+  padding:2px;
+  border-radius:15px;
+  width: 200px;
+  font-weight: bold;
+  text-align: center;
+  background: cyan;
+  font-size: 20px;
+}
+
+.thong_bao{
+  padding-top: 40%;
+  margin-left:15px;
+  text-align: center;
+  font-size: 25px;
+  font-weight: bold;
+  padding:10px;
+  border-radius:15px;
+  color:coral;
+  border: 1px solid #ccc!important;
+
+}
+
+.ant-tabs-tab {
+  font-size: 16px !important;
+}
+
+.zoom_image{
+  transition: transform .2s !important; /* Animation */
+  border-radius: 15px !important;
+}
+.zoom_image:hover{
+transform: scale(1.05); /* (150% zoom - Note: if the zoom is too large, it will go outside of the viewport) */
+border-radius: 15px !important;
+}
+
+.title_img{
+  background-image: url("./Dragons-48.png");
+  background-size: -webkit-fill-available !important;
+  height: 280px;
+  border: 2px solid;
+}
+
+.view_conten
+{
+  padding-top: 10px;
+  margin-left:60px;
+  margin-right:60px;
+  padding:10px;
+  border-radius:15px;
+  font-weight: 450;
+  border: 1px solid #ccc!important;
+  background: #EEE;
+}
+
+.view_conten_mobile
+{
+  padding-top: 10px;
+  padding:10px;
+  border-radius:15px;
+  font-weight: 450;
+  border: 1px solid #ccc!important;
+  background: #EEE;
+}
+
+.list_chuong{
+  padding:5px;
+  font-size: 15px;
+  color:coral;
+  border: 1px solid #ccc!important;
+
+}
+
+.ant-carousel .slick-slide img {
+ padding:10px;
+}
+
+.ant-carousel .slick-slide img:hover {
+  transform: scale(1.02) !important
+ }

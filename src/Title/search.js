@@ -15,13 +15,16 @@ export default function Search() {
         }
     }
     return (<div style={{ color: 'white' }}>
-            <Form.Control 
-            className="mt-1" 
+        <center>
+        <Form.Control 
+            className="mt-2 col-10" 
             type="text" 
             placeholder="Tìm truyện ..." 
             value={inputtext}
             onChange={(e)=>setInputtext(e.target.value)} 
             onKeyPress={onpress}
             />
+        </center>
+            
     </div>)
 }

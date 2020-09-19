@@ -2,7 +2,7 @@
 // Contact: trinh.khac.cong.hust@gmail.com
 // Phone: 0969860930
 import React, { useState, useEffect } from "react";
-
+import { List, Card,Pagination } from "antd";
 import axios from "axios";
 import {
   BrowserRouter as Router,
@@ -15,6 +15,9 @@ import { BootstrapTable, TableHeaderColumn } from "react-bootstrap-table";
 export default function ListSeach() {
   const [data, setData] = useState([]);
   const [checkdata, setCheckdata] = useState(false);
+
+  let isMobile = window.innerWidth <= 768;
+  let width_window = window.innerWidth < 768;
 
   let location = useLocation();
   useEffect(() => {
@@ -36,39 +39,6 @@ export default function ListSeach() {
     fetch_data();
   }, [location]);
 
-  const priceFormatter = (cell, row) => {
-    return (
-      <Link
-        to={{
-          pathname: "/intro-truyen/" + row.id_ten,
-        }}
-        style={{ textDecoration: "none", color: "black" }}
-      >
-        <div className="row">
-          <div className="col-3">
-            <img width={90} src={row.link} />
-          </div>
-          <div className="col-9">
-            <div style={{ marginBottom:5,fontWeight:'bold'  }}>
-              {row.ten}
-            </div>
-            <div style={{ marginBottom:5}}>
-              {'"'+row.content.replaceAll("*","").slice(0,150) +'..."'}
-    
-            </div>
-            <div style={{ marginBottom:5}}>
-              <img width='20px' src="../tac_gia.png" />
-              {row.tac_gia}
-            </div>
-            <div>
-              <img width='20px' src="../list_green.png" style={{marginRight:5}}/>Tổng chương: 
-              {" "+row.chuong}
-            </div>
-          </div>
-        </div>
-      </Link>
-    );
-  };
 
   return (
     <div>
@@ -79,21 +49,196 @@ export default function ListSeach() {
           </div>
         </center>
       )}
-      {checkdata && (
-        <BootstrapTable
-          data={data}
-          striped={true}
-          hover={true}
-          pagination={true}
-        >
-          <TableHeaderColumn
-            dataField="chuong"
-            isKey={true}
-            dataFormat={priceFormatter}
+      {checkdata && !isMobile&& (
+        <div>
+         <p
+            style={{
+              fontSize: 25,
+              fontWeight: "bold",
+              paddingBottom: 10,
+              color: "#17a2b8",
+              textAlign: "center",
+            }}
           >
-            <p style={{ fontSize: 20, color: "#17a2b8" }}>Danh sách truyện</p>
-          </TableHeaderColumn>
-        </BootstrapTable>
+           Danh sách truyện tìm kiếm
+          </p>
+        <List
+            grid={{ gutter: 16, column: 3 }}
+            dataSource={data}
+            renderItem={(item) => (
+              <List.Item>
+                <Card>
+                  <Link
+                    to={{
+                      pathname: "/intro-truyen/" + item.id_ten,
+                    }}
+                    style={{ textDecoration: "none", color: "black" }}
+                  >
+                    <div className="row">
+                      <img
+                        className="zoom_image col-4"
+                        src={item.link}
+                        onClick={() => window.scroll(0, 0)}
+                      />
+                      <div className="col">
+                        <div
+                          style={{
+                            paddingLeft: 20,
+                            fontWeight: "bold",
+                            color: "#17a2b8",
+                          }}
+                        >
+                          {item.ten}
+                        </div>
+                        <div style={{ paddingLeft: 20 }}>
+                          {'"' +
+                            item.content.replaceAll("*", "").slice(0, 150) +
+                            '..."'}
+                        </div>
+                        <div style={{ paddingLeft: 20, fontWeight: "bold" }}>
+                          <img src="../../tac_gia.png" width="20px" />
+                          {item.tac_gia}
+                        </div>
+                        <div style={{ paddingLeft: 20, fontWeight: "bold" }}>
+                          Chương: {item.chuong}
+                        </div>
+                      </div>
+                    </div>
+                  </Link>
+                </Card>
+              </List.Item>
+            )}
+          />
+          <br />
+        </div>
+      )}
+
+{checkdata && isMobile&& !width_window &&(
+        <div>
+         <p
+            style={{
+              fontSize: 25,
+              fontWeight: "bold",
+              paddingBottom: 10,
+              color: "#17a2b8",
+              textAlign: "center",
+            }}
+          >
+           Danh sách truyện tìm kiếm
+          </p>
+        <List
+            grid={{ gutter: 16, column: 2 }}
+            dataSource={data}
+            renderItem={(item) => (
+              <List.Item>
+                <Card>
+                  <Link
+                    to={{
+                      pathname: "/intro-truyen/" + item.id_ten,
+                    }}
+                    style={{ textDecoration: "none", color: "black" }}
+                  >
+                    <div className="row">
+                      <img
+                        className="zoom_image col-4"
+                        src={item.link}
+                        onClick={() => window.scroll(0, 0)}
+                      />
+                      <div className="col">
+                        <div
+                          style={{
+                            paddingLeft: 20,
+                            fontWeight: "bold",
+                            color: "#17a2b8",
+                          }}
+                        >
+                          {item.ten}
+                        </div>
+                        <div style={{ paddingLeft: 20 }}>
+                          {'"' +
+                            item.content.replaceAll("*", "").slice(0, 150) +
+                            '..."'}
+                        </div>
+                        <div style={{ paddingLeft: 20, fontWeight: "bold" }}>
+                          <img src="../../tac_gia.png" width="20px" />
+                          {item.tac_gia}
+                        </div>
+                        <div style={{ paddingLeft: 20, fontWeight: "bold" }}>
+                          Chương: {item.chuong}
+                        </div>
+                      </div>
+                    </div>
+                  </Link>
+                </Card>
+              </List.Item>
+            )}
+          />
+          <br />
+        </div>
+      )}
+{checkdata && isMobile&& width_window &&(
+        <div>
+         <p
+            style={{
+              fontSize: 25,
+              fontWeight: "bold",
+              paddingBottom: 10,
+              color: "#17a2b8",
+              textAlign: "center",
+            }}
+          >
+           Danh sách truyện tìm kiếm
+          </p>
+        <List
+            grid={{ gutter: 16, column: 1 }}
+            dataSource={data}
+            renderItem={(item) => (
+              <List.Item>
+                <Card>
+                  <Link
+                    to={{
+                      pathname: "/intro-truyen/" + item.id_ten,
+                    }}
+                    style={{ textDecoration: "none", color: "black" }}
+                  >
+                    <div className="row" onClick={()=>window.scroll(0,0)}>
+                      <img
+                        className="zoom_image"
+                        width={width_window?'30%':'10%'}
+                        src={item.link}
+                        onClick={() => window.scroll(0, 0)}
+                      />
+                      <div className="col">
+                        <div
+                          style={{
+                            paddingLeft: 20,
+                            fontWeight: "bold",
+                            color: "#17a2b8",
+                          }}
+                        >
+                          {item.ten}
+                        </div>
+                        <div style={{ paddingLeft: 20 }}>
+                          {'"' +
+                            item.content.replaceAll("*", "").slice(0, 150) +
+                            '..."'}
+                        </div>
+                        <div style={{ paddingLeft: 20, fontWeight: "bold" }}>
+                          <img src="../../tac_gia.png" width="20px" />
+                          {item.tac_gia}
+                        </div>
+                        <div style={{ paddingLeft: 20, fontWeight: "bold" }}>
+                          Chương: {item.chuong}
+                        </div>
+                      </div>
+                    </div>
+                  </Link>
+                </Card>
+              </List.Item>
+            )}
+          />
+          <br />
+        </div>
       )}
     </div>
   );

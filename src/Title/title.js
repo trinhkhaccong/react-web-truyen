@@ -7,6 +7,7 @@ import Registration from "./registration"
 import Logo from "./logo"
 import {Link,useLocation} from "react-router-dom"
 import "./title.css"
+import 'antd/dist/antd.css';
 
 export default  function Title()
 {
@@ -30,6 +31,6 @@ export default  function Title()
   
   return(<div className='row' style={{background:'#FFF',padding:25}}>
     <div className='col-4 text_center' ><img style={{cursor:'pointer'}} width={110} height ={75} src={require("./logo.png")} onClick={()=>window.open("/","_parent")}/></div>
-    <div className='col-5'><Search/></div>
+    <div className='col-6 ml-3'><Search/></div>
   </div>)
 }

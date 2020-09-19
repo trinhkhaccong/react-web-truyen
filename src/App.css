@@ -98,3 +98,10 @@
   height: 56.5px;
   background: #EEEEEE;
 }
+
+.title_menu_mobile {
+  position: fixed !important;
+  background-color: #EEEEEE;
+  z-index: 100 !important;
+  width: -webkit-fill-available !important;
+}

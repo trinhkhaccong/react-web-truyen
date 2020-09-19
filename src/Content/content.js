@@ -10,33 +10,59 @@ import {
   useLocation,
   Link,
 } from "react-router-dom";
-import Select from "react-select";
-
+import { Tabs, Select } from "antd";
+import Form from "react-bootstrap/Form";
+const { TabPane } = Tabs;
 export default function Content() {
   let location = useLocation();
   var chuong = parseInt(location.pathname.split("/")[3].split("chuong-")[1]);
+  const [pressedKeys, setPressedKeys] = useState([]);
   const [data, setDataLocation] = useState({});
   const [content, setContent] = useState([]);
   const [checkdata, setCheckdata] = useState(false);
   const [checkdown, setCheckdown] = useState(false);
-  const [chuongnext, setChuongnext] = useState(
-    location.pathname.slice(0, location.pathname.search("chuong-") + 7) +
-      (chuong + 1).toString()
-  );
-  const [chuongdown, setChuongdown] = useState(
-    location.pathname.slice(0, location.pathname.search("chuong-") + 7) +
-      chuong.toString()
-  );
+  const [chuongnext, setChuongnext] = useState();
+  const [chuongdown, setChuongdown] = useState();
   const [options, setOption] = useState([]);
 
+  let isMobile = window.innerWidth <= 768;
+  let width_window = window.innerWidth < 768;
+  const downHandler = ({ key }) => {
+    if (key === "ArrowLeft") {
+      if (chuong == 1) {
+        window.open(
+          location.pathname.slice(0, location.pathname.search("chuong-") + 7) +
+            chuong.toString(),
+          "_parent"
+        );
+      }
+      if (chuong > 1) {
+        window.open(
+          location.pathname.slice(0, location.pathname.search("chuong-") + 7) +
+            (chuong - 1).toString(),
+          "_parent"
+        );
+      }
+    }
+  };
+
+  const upHandler = ({ key }) => {
+    if (key === "ArrowRight") {
+      window.open(
+        location.pathname.slice(0, location.pathname.search("chuong-") + 7) +
+          (chuong + 1).toString(),
+        "_parent"
+      );
+    }
+  };
+
   useEffect(() => {
+    window.addEventListener("keydown", downHandler);
+    window.addEventListener("keyup", upHandler);
+    window.scroll(0,0)
     const fetch_data = async () => {
       var chuong = parseInt(
         location.pathname.split("/")[3].split("chuong-")[1]
-      );
-      console.log(
-        location.pathname.slice(0, location.pathname.search("chuong-") + 7) +
-          (chuong + 1).toString()
       );
       setChuongnext(
         location.pathname.slice(0, location.pathname.search("chuong-") + 7) +
@@ -67,25 +93,11 @@ export default function Content() {
       } else {
         setDataLocation(res.data.data);
         setContent(res.data.data.content.split("\n"));
-        let chuong = [
-          { value: "--chon chuong--", label: "-- Chọn Chương -- " },
-        ];
+        let chuong = [];
         for (var i = 1; i <= res.data.chuong; i++) {
           let ob = {
             value: i,
-            label: (
-              <Link
-                to={
-                  location.pathname.slice(
-                    0,
-                    location.pathname.search("chuong-") + 7
-                  ) + i.toString()
-                }
-                style={{ color: "orange" }}
-              >
-                Chương {i.toString()}
-              </Link>
-            ),
+            label: "Chương " + i.toString(),
           };
           chuong.push(ob);
         }
@@ -95,6 +107,12 @@ export default function Content() {
     };
     fetch_data();
   }, [location]);
+
+  const { Option } = Select;
+
+  function onChange(value) {
+    console.log(`selected ${value}`);
+  }
 
   return (
     <div>
@@ -106,7 +124,7 @@ export default function Content() {
         </center>
       )}
       {checkdata && (
-        <div>
+        <div className={isMobile?"view_conten_mobile":"view_conten"}>
           <center style={{ fontSize: 25, fontWeight: "bold", color: "Blue" }}>
             {data.ten}
           </center>
@@ -114,34 +132,61 @@ export default function Content() {
             {data.chuong}
           </center>
           <center>
-            <img src="../../pic_so_deep.png" width="40%" margin='10px' className="m-2" />
-            <div className="row">
-              <center className="col-4">
-                <button type="button" class="btn btn-info" disabled={checkdown}>
-                  <Link
-                    to={{
-                      pathname: chuongdown,
-                    }}
-                    style={{ textDecoration: "none", color: "white" }}
-                  >
-                    {"<<"}
-                  </Link>
-                </button>
-              </center>
-              <center className="col-4">
-                <Select defaultValue={options[0]} options={options} />
-              </center>
-              <center className="col-4">
-                <button type="button" class="btn btn-info">
-                  <Link
-                    to={chuongnext}
-                    style={{ textDecoration: "none", color: "white" }}
-                  >
-                    {">>"}
-                  </Link>
-                </button>
-              </center>
-            </div>
+            {
+              
+            }
+            <img
+              src="../../pic_so_deep.png"
+              width={isMobile?"300px":"500px"}
+              margin="10px"
+              className="m-2"
+            />
+            <center>
+              <button
+                type="button"
+                class="btn btn-info"
+                disabled={checkdown}
+                onClick={() => window.open(chuongdown, "_parent")}
+              >
+                {"<<"}
+              </button>
+              <Select
+                className="ml-5 mr-5 mt-1"
+                showSearch
+                style={{ width: 150 }}
+                placeholder="Chọn Chương"
+                optionFilterProp="children"
+                onChange={onChange}
+                filterOption={(input, option) =>
+                  option.children.toLowerCase().indexOf(input.toLowerCase()) >=
+                  0
+                }
+              >
+                {options.map((value) => (
+                  <Option value={value.label}>
+                    <Link
+                      style={{ width: 150, textAlign: "center" }}
+                      to={
+                        location.pathname.slice(
+                          0,
+                          location.pathname.search("chuong-") + 7
+                        ) + value.value.toString()
+                      }
+                      style={{ fontWeight: "bold", textDecoration: "none" }}
+                    >
+                      <center>{value.label}</center>
+                    </Link>
+                  </Option>
+                ))}
+              </Select>
+              <button
+                type="button"
+                class="btn btn-info"
+                onClick={() => window.open(chuongnext, "_parent")}
+              >
+                {">>"}
+              </button>
+            </center>
             <hr />
           </center>
           <div>
@@ -154,33 +199,59 @@ export default function Content() {
           </div>
         </div>
       )}
-      <div className="row">
-              <center className="col-4">
-                <button type="button" class="btn btn-info" disabled={checkdown} onClick={window.scroll(0,0)}>
-                  <Link
-                    to={{
-                      pathname: chuongdown,
-                    }}
-                    style={{ textDecoration: "none", color: "white" }}
-                  >
-                   {"<<"}
-                  </Link>
-                </button>
-              </center>
-              <center className="col-4">
-                <Select defaultValue={options[0]} options={options} />
-              </center>
-              <center className="col-4">
-                <button type="button" class="btn btn-info" onClick={window.scroll(0,0)}>
-                  <Link
-                    to={chuongnext}
-                    style={{ textDecoration: "none", color: "white" }}
-                  >
-                     {">>"}
-                  </Link>
-                </button>
-              </center>
-            </div>
+      <center className="m-4">
+        <button
+          type="button"
+          class="btn btn-info"
+          disabled={checkdown}
+          onClick={() => window.open(chuongdown, "_parent")}
+        >
+          {"<<"}
+        </button>
+        <Select
+          className="ml-5 mr-5 mt-1"
+          showSearch
+          style={{ width: 150 }}
+          placeholder="Chọn Chương"
+          optionFilterProp="children"
+          onChange={onChange}
+          filterOption={(input, option) =>
+            option.children.toLowerCase().indexOf(input.toLowerCase()) >= 0
+          }
+        >
+          {options.map((value) => (
+            <Option value={value.label}>
+              <Link
+                style={{ width: 150, textAlign: "center" }}
+                to={
+                  location.pathname.slice(
+                    0,
+                    location.pathname.search("chuong-") + 7
+                  ) + value.value.toString()
+                }
+                style={{ fontWeight: "bold", textDecoration: "none" }}
+              >
+                <center>{value.label}</center>
+              </Link>
+            </Option>
+          ))}
+        </Select>
+        <button
+          type="button"
+          class="btn btn-info"
+          onClick={() => window.open(chuongnext, "_parent")}
+        >
+          {">>"}
+        </button>
+      </center>
+      <div style={{ padding: 20 }}>
+        <Tabs>
+          <TabPane tab="Bình luận" key="3">
+            <Form.Label>Viết bình luận</Form.Label>
+            <Form.Control as="textarea" rows="3" />
+          </TabPane>
+        </Tabs>
+      </div>
     </div>
   );
 }

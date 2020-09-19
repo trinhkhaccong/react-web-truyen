@@ -44,14 +44,33 @@
 .right {
   margin-right:0px;/* whatever */
   margin:auto;
-  margin-left: 90%;
+  margin-left: 80%;
   cursor: pointer;
+  height: 30px;
+  text-align: center;
 }
 
 .right:hover {
   margin-right:0px;/* whatever */
   margin:auto;
-  margin-left: 90%;
+  margin-left: 80%;
   cursor: pointer;
   color: orange;
+  height: 30px;
+  text-align: center;
+}
+
+.ant-pagination {
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
+  margin: auto;
+  text-align: center;
+  padding: 0;
+  color: rgba(0, 0, 0, 0.85);
+  font-size: 14px;
+  font-variant: tabular-nums;
+  line-height: 1.5715;
+  list-style: none;
+  -webkit-font-feature-settings: 'tnum';
+  font-feature-settings: 'tnum', "tnum";
 }

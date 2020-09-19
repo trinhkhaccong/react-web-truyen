@@ -9,6 +9,7 @@ import {
 } from "react-router-dom";
 export default function History() {
   const [data_history, setDataHistory] = useState([]);
+  let isMobile = window.innerWidth <= 768;
   useEffect(() => {
     const get_history = async () => {
       if (localStorage.getItem("ten-truyen") != null) {
@@ -28,9 +29,17 @@ export default function History() {
   }, []);
   return (
     <div style={{ padding: 20 }}>
-      <center className="" style={{ fontWeight: "bold" ,fontSize:20}}>
-        Lịch Sử
-      </center>
+      <p
+            style={{
+              fontSize: 25,
+              fontWeight: "bold",
+              paddingBottom: 10,
+              color: "#17a2b8",
+              textAlign: "center",
+            }}
+          >
+            Lịch sử
+          </p>
       <hr />
      
       {data_history.map((value,key) => (
@@ -52,8 +61,12 @@ export default function History() {
               <div style={{fontWeight:'bold'}}>{value.ten}</div>
               <div>chương: {value.chuong}</div>
               {
-                value.the_loai.split("-").map(value2=>(<button type="button" className="btn btn-primary btn-sm m-1" >{value2}</button>))
+                !isMobile && (<div>{
+                  value.the_loai.split("-").map(value2=>(<button type="button" className="btn btn-primary btn-sm m-1" >{value2}</button>))
+                }</div>)
               }
+              
+              
             </div>
           </div>
         </Link>
